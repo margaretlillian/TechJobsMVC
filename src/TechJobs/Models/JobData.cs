@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -60,13 +61,14 @@ namespace TechJobs.Models
                 {
                     string aValue = row[key];
 
-                    if (aValue.ToLower().Contains(value.ToLower()))
+                    if (aValue.IndexOf(value, StringComparison.CurrentCultureIgnoreCase) != -1)
                     {
                         jobs.Add(row);
 
                         // Finding one field in a job that matches is sufficient
                         break;
                     }
+                  
                 }
             }
 
@@ -91,7 +93,7 @@ namespace TechJobs.Models
             {
                 string aValue = row[column];
 
-                if (aValue.ToLower().Contains(value.ToLower()))
+                if (aValue.IndexOf(value, StringComparison.CurrentCultureIgnoreCase) != -1)
                 {
                     jobs.Add(row);
                 }

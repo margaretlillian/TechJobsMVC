@@ -60,15 +60,18 @@ namespace TechJobs.Models
                 foreach (string key in row.Keys)
                 {
                     string aValue = row[key];
+                    if (aValue == null)
+                    {
+                        break;                    }
 
-                    if (aValue.IndexOf(value, StringComparison.CurrentCultureIgnoreCase) != -1)
+                    else if (aValue.ToLower().Contains(value.ToLower()))
                     {
                         jobs.Add(row);
 
                         // Finding one field in a job that matches is sufficient
                         break;
                     }
-                  
+                 
                 }
             }
 
@@ -93,7 +96,7 @@ namespace TechJobs.Models
             {
                 string aValue = row[column];
 
-                if (aValue.IndexOf(value, StringComparison.CurrentCultureIgnoreCase) != -1)
+                if (aValue.ToLower().Contains(value.ToLower()))
                 {
                     jobs.Add(row);
                 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using TechJobs.Models;
 
@@ -19,10 +20,15 @@ namespace TechJobs.Controllers
         public IActionResult Results(string searchType, string searchTerm)
                       
         {
+            if (String.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = "khgjhgjhgj555gghjh###+=+ggjhghj";
+            }
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
 
             if (searchType == "all")
-            {jobs = JobData.FindByValue(searchTerm);              
+            {jobs = JobData.FindByValue(searchTerm); 
+ 
             }
         else
             {
